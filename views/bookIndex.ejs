@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Index</title>
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        
+        <div class="header">
+			
+            <div class="header">lcbooks</div>
+            <div class="nav">
+                <div class="navList">
+                    <div class="link">小说文学</div>
+                    <div class="link">历史传记</div>
+                    <div class="link">小说文学</div>
+                    <div class="link">历史传记</div>
+                    <div class="link">小说文学</div>
+                    <div class="link">历史传记</div>
+                    <div class="link">小说文学</div>
+                    <div class="link">历史传记</div>
+                    <div class="search">
+                        <input type="text">
+                        <button><span class="icon"></span class="text"><span>搜索</span></button>
+                    </div>
+                </div>
+            </div>
+			<canvas class="raining"></canvas>
+        </div>
+
+        <script src="js/fire.js" type="text/javascript" charset="utf-8"></script>
+
+        <div class="content">
+            <div class="bookList">
+                <% for(let i=0;i<books.length;i++){%>
+                <div class="bookItem">
+                    <img class="bookImg" src="<%-books[i].bookimg%>" >
+                    <h3 class="title"><%-books[i].bookname%></h3>
+                    <p class="author"><%-books[i].author%></p>
+                    <div class="cataory"><%-books[i].cataory%></div>
+                </div>
+                <%}%>
+
+            </div>
+            <div class="erweima">
+                <img src="img/erweima.jpg" >
+            </div>
+        </div>
+
+    </body>
+
+</html>
