@@ -28,4 +28,18 @@ app.get('/',async (req,res)=>{
     res.render('bookIndex.ejs',options)
 })
 
+
+app.get('/books/:bookid',async (req,res)=>{
+    let strSql = "select * from book where id = ?"
+    let bookid = req.params.bookid
+    let result = await sqlQuery(strSql,[bookid])
+    //res.send(bookid)
+    //console.log(result)
+    let options = {
+        book:result[0]
+    }
+    res.render('bookInfo.ejs',options)
+})
+
+
 module.exports = app

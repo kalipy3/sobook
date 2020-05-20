@@ -2,8 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Index</title>
-        <link rel="stylesheet" href="./css/style.css">
+        <title><%-book.bookname%></title>
+        <link rel="stylesheet" href="/css/bookInfo.css">
+        <link rel="stylesheet" href="/css/bookInfo2.css">
+        <link rel="stylesheet" href="/css/share.min.css">
+
     </head>
     <body>
         
@@ -33,23 +36,28 @@
 
         <div class="content">
             <div class="bookList">
-                <% for(let i=0;i<books.length;i++){ %>
-                    <a href="/books/<%-books[i].id%>">
-
-                <div class="bookItem">
-                    <img class="bookImg" src="<%-books[i].bookimg%>" >
-                    <h3 class="title"><%-books[i].bookname%></h3>
-                    <p class="author"><%-books[i].author%></p>
-                    <div class="cataory"><%-books[i].cataory%></div>
-                    </a>
-                </div>
-                <%}%>
-
+                <%-book.brief%>
             </div>
             <div class="erweima">
-                <img src="img/erweima.jpg" >
+                <img src="/img/erweima.jpg" >
             </div>
         </div>
+
+        <script>
+            var delDiv = document.querySelector("body > div.content > div.bookList > div.open-message")
+            delDiv.parentElement.removeChild(delDiv)
+
+            delDiv = document.querySelector("body > div.content > div.bookList > div.article-social > div.reward > p:nth-child(3)")
+            delDiv.parentElement.removeChild(delDiv)
+
+            delDiv = document.querySelector("body > div.content > div.bookList > div.e-secret")
+            delDiv.parentElement.removeChild(delDiv)
+
+            delDiv = document.querySelector("body > div.content > div.bookList > table > tbody > tr:nth-child(3) > td > a:nth-child(2)")
+            delDiv.parentElement.removeChild(delDiv)
+        </script>
+        </script>
+        </script>
 
     </body>
 
