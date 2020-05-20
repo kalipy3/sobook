@@ -1,64 +1,62 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title><%-book.bookname%></title>
-        <link rel="stylesheet" href="/css/bookInfo.css">
-        <link rel="stylesheet" href="/css/bookInfo2.css">
-        <link rel="stylesheet" href="/css/share.min.css">
+	<head>
+		<meta charset="utf-8" />
+		<title><%-book.bookname%></title>
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/style1.css">
+		<link rel="stylesheet" href="/css/share.min.css">
+		<style>
+			.bookList h2{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<div class="navheader"></div>
+			<div class="nav">
+				<div class="navList">
+					<div class="link">小说文学</div>
+					<div class="link">历史传记</div>
+					<div class="link">小说文学</div>
+					<div class="link">历史传记</div>
+					<div class="link">小说文学</div>
+					<div class="link">历史传记</div>
+					<div class="link">小说文学</div>
+					<div class="link">历史传记</div>
+					<div class="search">
+						<input type="text">
+						<button><span class="icon"></span><span class="text">搜索</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="contentMain">
+		<div class="content">
+			<div class="bookList">
+				<%-book.brief%>
+			</div>
+			<div class="erweima">
+				<img src="https://sobooks.cc/wp-content/themes/Git/assets/img/hygz.jpg" >
+			</div>
+		</div>
+	</div>
+	<script>
+		var delDiv = document.querySelector("body > div.contentMain > div > div.bookList > div.open-message");
+		delDiv.parentElement.removeChild(delDiv)
 
-    </head>
-    <body>
-        
-        <div class="header">
-			
-            <div class="header">lcbooks</div>
-            <div class="nav">
-                <div class="navList">
-                    <div class="link">小说文学</div>
-                    <div class="link">历史传记</div>
-                    <div class="link">小说文学</div>
-                    <div class="link">历史传记</div>
-                    <div class="link">小说文学</div>
-                    <div class="link">历史传记</div>
-                    <div class="link">小说文学</div>
-                    <div class="link">历史传记</div>
-                    <div class="search">
-                        <input type="text">
-                        <button><span class="icon"></span class="text"><span>搜索</span></button>
-                    </div>
-                </div>
-            </div>
-			<canvas class="raining"></canvas>
-        </div>
 
-        <script src="js/fire.js" type="text/javascript" charset="utf-8"></script>
-
-        <div class="content">
-            <div class="bookList">
-                <%-book.brief%>
-            </div>
-            <div class="erweima">
-                <img src="/img/erweima.jpg" >
-            </div>
-        </div>
-
-        <script>
-            var delDiv = document.querySelector("body > div.content > div.bookList > div.open-message")
-            delDiv.parentElement.removeChild(delDiv)
-
-            delDiv = document.querySelector("body > div.content > div.bookList > div.article-social > div.reward > p:nth-child(3)")
-            delDiv.parentElement.removeChild(delDiv)
-
-            delDiv = document.querySelector("body > div.content > div.bookList > div.e-secret")
-            delDiv.parentElement.removeChild(delDiv)
-
-            delDiv = document.querySelector("body > div.content > div.bookList > table > tbody > tr:nth-child(3) > td > a:nth-child(2)")
-            delDiv.parentElement.removeChild(delDiv)
-        </script>
-        </script>
-        </script>
-
-    </body>
-
+		delDiv = document.querySelector(".e-secret");
+		delDiv.parentElement.removeChild(delDiv)
+		delDiv = document.querySelector(".dltable~img");
+		delDiv.parentElement.removeChild(delDiv)
+		delDiv = document.querySelector(".article-social");
+		delDiv.parentElement.removeChild(delDiv)
+		delDiv = document.querySelector("body > div.contentMain > div > div.bookList > table > tbody > tr:nth-child(3) > td > a:nth-child(2)")
+		delDiv.parentElement.removeChild(delDiv)
+		document.querySelector('body > div.contentMain > div > div.bookList > table  p').style.width = "30px"
+	</script>
+	
+	</body>
 </html>

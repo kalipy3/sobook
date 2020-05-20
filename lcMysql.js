@@ -1,26 +1,23 @@
-/*
- * lcMysql.js
- * Copyright (C) 2020 android <android@localhost>
- *
- * Distributed under terms of the MIT license.
- */
-
-let mysql = require("mysql")
+let mysql = require('mysql')
 
 let options = {
-    host:"192.168.43.1",
+    host:"localhost",
+    //port:"3306",//可选，默认式3306
     user:"root",
     password:"Abcd1234",
     database:"book"
 }
 
-let con = mysql.createConnection(options)
 
+let con = mysql.createConnection(options);
+
+//建立连接
 con.connect((err)=>{
-    if (err) {
+    //如果建立连接失败
+    if(err){
         console.log(err)
-    } else {
-        console.log("数据库连接成功")
+    }else{
+        console.log('数据库连接成功')
     }
 })
 
@@ -36,4 +33,4 @@ function sqlQuery(strSql,arr){
     })
 }
 
-module.exports = sqlQuery
+module.exports = sqlQuery;
