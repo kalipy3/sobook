@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Index</title>
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
         
@@ -12,17 +12,14 @@
             <div class="header">lcbooks</div>
             <div class="nav">
                 <div class="navList">
-                    <div class="link">小说文学</div>
-                    <div class="link">历史传记</div>
-                    <div class="link">小说文学</div>
-                    <div class="link">历史传记</div>
-                    <div class="link">小说文学</div>
-                    <div class="link">历史传记</div>
-                    <div class="link">小说文学</div>
-                    <div class="link">历史传记</div>
+                    <div class="link"><a href="/">首页</a></div>
+                    <% for(let i=0;i<cataorys.length;i++){ %>
+                    <div class="link"><a href="/cataory/<%=cataorys[i].id%>"><%=cataorys[i].cataory%></a></div>
+                    <%}%>
+
                     <div class="search">
-                        <input type="text">
-                        <button><span class="icon"></span class="text"><span>搜索</span></button>
+                        <input type="text" id="search">
+                        <button class="searchBtn"><span class="icon"></span class="text"><span>搜索</span></button>
                     </div>
                 </div>
             </div>
@@ -47,9 +44,17 @@
 
             </div>
             <div class="erweima">
-                <img src="img/erweima.jpg" >
+                <img src="/img/erweima.jpg" >
             </div>
         </div>
+
+        <script>
+            var searchBtn = document.querySelector(".searchBtn")
+            searchBtn.onclick = function(e) {
+                let value = document.querySelector("#search").value
+                location.href = "/search/"+value;
+            }
+        </script>
 
     </body>
 

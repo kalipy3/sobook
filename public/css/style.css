@@ -36,6 +36,11 @@ body {
     background: rgba(0,0,0,0.8);
 }
 
+.nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .navList{
     width: 1200px;
     margin: 0 auto;
