@@ -1,17 +1,27 @@
 var express = require('express');
 var router = express.Router();
 let sqlQuery = require('../lcMysql')
+var crypto = require('crypto')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.render('login');
 });
 
+
+function jiami(str) {
+    let salt = "afsddasfjkhsdakjfhsadfkjsdahfksadj"
+    let obj = crypto.createHash('md5')
+    str = salt+str
+    obj.update(str)
+    return obj.digest('hex')
+}
+
 router.post('/',async function(req,res){
     console.log(req.body)
     //根据提交者用户名判断账号是否正确
     let strSql = "select * from user where username=? and password=?"
-    let arr = [req.body.username,req.body.password]
+    let arr = [req.body.username,jiami(req.body.password)]
     let result = await sqlQuery(strSql,arr)
     if (result.length != 0) {
         //登录成功

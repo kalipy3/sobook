@@ -8,6 +8,7 @@
 var express = require('express');
 var router = express.Router();
 var sqlQuery = require('../lcMysql')
+var crypto = require('crypto')
 
 /* GET users listing. */
 //登录页有个注册按钮，可以切换到注册页form
@@ -15,11 +16,19 @@ router.get('/', function(req, res, next) {
   res.render('login')
 });
 
+function jiami(str) {
+    let salt = "afsddasfjkhsdakjfhsadfkjsdahfksadj"
+    let obj = crypto.createHash('md5')
+    str = salt+str
+    obj.update(str)
+    return obj.digest('hex')
+}
+
 router.post('/',async function(req,res){
     //获取表单提交的邮箱，密码，用户名
     console.log(req.body)
     let mail = req.body.mail
-    let password = req.body.password[0]
+    let password = jiami(req.body.password[0])
     let username = req.body.username
     //判断邮箱是否已经注册，如果已经注册，将不再注册
     let strSql = "select * from user where mail = ?"
