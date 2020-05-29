@@ -91,12 +91,12 @@ body {
                 <h1 style="color:#FFFFFF">欢迎注册</h1>
             </header>
             <div class="beg-login-main">
-                <form action="" class="layui-form" method="post"><input name="__RequestVerificationToken" type="hidden" value="fkfh8D89BFqTdrE2iiSdG_L781RSRtdWOH411poVUWhxzA5MzI8es07g6KPYQh9Log-xf84pIR2RIAEkOokZL3Ee3UKmX0Jc8bW8jOdhqo81" />		
+                <form action="/register" class="layui-form" method="post"><input name="__RequestVerificationToken" type="hidden" value="fkfh8D89BFqTdrE2iiSdG_L781RSRtdWOH411poVUWhxzA5MzI8es07g6KPYQh9Log-xf84pIR2RIAEkOokZL3Ee3UKmX0Jc8bW8jOdhqo81" />		
                     <div class="layui-form-item">
                         <label class="beg-login-icon">
                             <i class="layui-icon">&#xe612;</i>
                         </label>
-                        <input id="username_register" type="text" name="userName" lay-verify="userName" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        <input id="username_register" type="text" name="username" lay-verify="userName" autocomplete="off" placeholder="请输入用户名" class="layui-input">
                     </div>
                     <div class="layui-form-item">
                         <label class="beg-login-icon">
@@ -114,11 +114,11 @@ body {
                         <label class="beg-login-icon">
                             <i class="layui-icon">&#xe6b2;</i>
                         </label>
-                        <input id="regcode_register" type="text" name="regcode" lay-verify="regcode" autocomplete="off" placeholder="请输入注册码" class="layui-input">
+                        <input id="regcode_register" type="text" name="mail" lay-verify="regcode" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
                     </div>
                     <div class="layui-form-item">
                         <div class="beg-pull-left beg-login-remember" style="color:#FFFFFF;margin-top: 6%;">
-                            <button class="layui-btn" onclick="register();return false;">
+                            <button class="layui-btn" onclick="register();return true;">
                                 <i class="layui-icon">&#xe650;</i> 注册
                         </div>
 

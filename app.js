@@ -7,6 +7,7 @@ var app = express();
 
 let bookRouter = require('./routes/bookRouter.js')
 let loginRouter = require('./routes/loginRouter.js')
+let registerRouter = require('./routes/registerRouter.js')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -96,6 +97,7 @@ app.get('/search/:searchKey/page/:pid',async (req,res)=>{
 app.use('/login',loginRouter)
 //详情页模块
 app.use('/books',bookRouter)
+app.use('/register',registerRouter)
 
 
 
