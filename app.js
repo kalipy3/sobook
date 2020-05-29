@@ -5,9 +5,12 @@ let session = require("express-session")
 let sqlQuery = require("./lcMysql")
 var app = express();
 
+
+
 let bookRouter = require('./routes/bookRouter.js')
 let loginRouter = require('./routes/loginRouter.js')
 let registerRouter = require('./routes/registerRouter.js')
+let uploadRouter = require('./routes/uploadRouter')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -98,7 +101,7 @@ app.use('/login',loginRouter)
 //详情页模块
 app.use('/books',bookRouter)
 app.use('/register',registerRouter)
-
+app.use('/imgUpload',uploadRouter)
 
 
 async function getCataory(){
