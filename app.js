@@ -1,11 +1,29 @@
 var express = require('express');
 var path = require("path")
+var cookieParser = require('cookie-parser')
+let session = require("express-session")
 let sqlQuery = require("./lcMysql")
 var app = express();
+
+let bookRouter = require('./routes/bookRouter.js')
+let loginRouter = require('./routes/loginRouter.js')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(session({
+    secret: "kalipy",
+    resave: true,//强制保存初始化的session
+    cookie: {
+        maxAge: 7*24*60*60*1000//设置有效期7天
+    },
+    saveUninitialized: true//是否保存初始化的session
+}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser('secret'));
+
 
 // 设置静态目录
 app.use(express.static(path.join(__dirname, 'public')));
@@ -75,17 +93,10 @@ app.get('/search/:searchKey/page/:pid',async (req,res)=>{
 })
 
 
-app.get('/books/:bookid',async (req,res)=>{
-    let strSql = "select * from book where id = ?";
-    let bookid = req.params.bookid;
-    let result = await sqlQuery(strSql,[bookid])
-    let options = {
-      book:result[0]
-    }
-    //console.log(result)
-    //res.send(bookid)
-    res.render('bookInfo.ejs',options)
-})
+app.use('/login',loginRouter)
+//详情页模块
+app.use('/books',bookRouter)
+
 
 
 async function getCataory(){
