@@ -11,6 +11,7 @@ let bookRouter = require('./routes/bookRouter.js')
 let loginRouter = require('./routes/loginRouter.js')
 let registerRouter = require('./routes/registerRouter.js')
 let uploadRouter = require('./routes/uploadRouter')
+let downloadRouter = require('./routes/downloadRouter.js')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -102,6 +103,7 @@ app.use('/login',loginRouter)
 app.use('/books',bookRouter)
 app.use('/register',registerRouter)
 app.use('/imgUpload',uploadRouter)
+app.use('/download',downloadRouter)
 
 
 async function getCataory(){
