@@ -30,7 +30,14 @@ router.post('/',upload.single('imgfile'),function(req,res){
     fs.rename(oldPath, newPath, ()=>{
         console.log("改名成功")
     })
-    res.send("上传成功")
+    res.json({
+        state:'ok',
+        imgUrl:'/upload/'+req.file.filename+req.file.originalname
+    })
+})
+
+router.get('/ajax',(req,res)=>{
+    res.render('uploadajax.ejs')
 })
 
 module.exports = router;

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <h1>图片上传</h1>
+  <!--表单上传文件时，需要改变属性enctype为multipart/form-data-->
+  <form id="uploadForm"  action="/imgUpload" method="post" enctype="multipart/form-data">
+    <label for="imgInput">选择文件</label>
+    <input hidden id="imgInput" type="file" name="imgfile">
+    <div class="btn">上传</div>
+  </form>
+  <div>
+    <h3>预览图片</h3>
+    <img id="yulan" src="" alt="">
+  </div>
+
+  <script src="/js/jquery.min.js"></script>
+  <script>
+      let formDataObj;
+      let file;
+      $('#imgInput').change(function(e){
+          //在浏览器的控制台输出
+          //console.log($('#uploadForm'))
+          console.log(this.files)
+          file = this.files[0]
+          //预览图片
+          //创建预览图片地址
+          let httpUrl = window.webkitURL.createObjectURL(file)
+          $("#yulan").attr("src",httpUrl)
+          formDataObj = new FormData()
+          //创建formData对象，将文件追加到formData对象里
+          formDataObj.append("imgfile",file)
+      })
+
+      $('.btn').click(function(){
+          $.ajax({
+              url:"/imgUpload",
+              method:"POST",
+              data:formDataObj,
+              processData:false,
+              contentType:false
+          }).then(function(res){
+              console.log(res)
+              $('body').append(`<h1>上传成功</h1><img src='${res.imgUrl}'>`)
+          })
+      })
+
+       
+
+  </script>
+</body>
+</html>
+
+
+
